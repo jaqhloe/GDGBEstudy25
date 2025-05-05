@@ -104,50 +104,50 @@ Storage engine 설계시 고려하는 것들
         graph databases
 
 ## DBMS Architecture
-구성 요소와 그 관계는 경우에 따라 다르게 분석되나 대부분 아래와 같다
-
-Client/Server 모형
-    DB의 instance(nodes) -> server
-    application -> clients
-
-Transport
-    query 형태로 들어온 request를 수신, query processor에 전달
-    다른 node나 database cluster와 통신
-Query Processor
-    query를 parse, interpret, validate
-        parse -> optimizer 
-            internal statistics(index cardinality, approximate intersection size)
-            data placement
-    access control check 수행(interpret 완료시)
-Execution engine
-    processor에서 만들어진 execution plan으로 수행
-
-    remote execution
-    local queries
-
-Storage engine
-
-    Transaction manager
-        consistency 유지
-    Lock manager
-        database object 잠금
-    Access methods(storage structures)
-        heap file, B- tree 등으로 disk 관리
-    Buffer manager
-        memory에 data cache
-    Recovery manager
-        failure에 대비해 log와 restoring system 관리
+    구성 요소와 그 관계는 경우에 따라 다르게 분석되나 대부분 아래와 같다
+    
+    Client/Server 모형
+        DB의 instance(nodes) -> server
+        application -> clients
+    
+    Transport
+        query 형태로 들어온 request를 수신, query processor에 전달
+        다른 node나 database cluster와 통신
+    Query Processor
+        query를 parse, interpret, validate
+            parse -> optimizer 
+                internal statistics(index cardinality, approximate intersection size)
+                data placement
+        access control check 수행(interpret 완료시)
+    Execution engine
+        processor에서 만들어진 execution plan으로 수행
+    
+        remote execution
+        local queries
+    
+    Storage engine
+    
+        Transaction manager
+            consistency 유지
+        Lock manager
+            database object 잠금
+        Access methods(storage structures)
+            heap file, B- tree 등으로 disk 관리
+        Buffer manager
+            memory에 data cache
+        Recovery manager
+            failure에 대비해 log와 restoring system 관리
     
 ## Memory-Based / Disk-Based
-In-memory database management systems(main memory DBMS)
-    RAM memory에 data 저장, disk로 recovery 및 logging
-    disk에 비해 접근 비용이 낮고 접근 단위(정밀도)가 작으며 프로그래밍이 쉽다
-    빠르지만 용량에 따른 비용 문제 발생
-    RAM volatility 문제
-        disk에 backup 생성
-        write-ahead logs(batch로 취급, snapshot과 checkpointing)
-        backup copy(sorted disk-based structure)
-Disk-based DBMS
-    disk에 대부분 data 저장, memory에 disk의 내용 cache
-    설계적 제약으로 in-memory만큼의 성능이 안 나옴
-NVM
+    In-memory database management systems(main memory DBMS)
+        RAM memory에 data 저장, disk로 recovery 및 logging
+        disk에 비해 접근 비용이 낮고 접근 단위(정밀도)가 작으며 프로그래밍이 쉽다
+        빠르지만 용량에 따른 비용 문제 발생
+        RAM volatility 문제
+            disk에 backup 생성
+            write-ahead logs(batch로 취급, snapshot과 checkpointing)
+            backup copy(sorted disk-based structure)
+    Disk-based DBMS
+        disk에 대부분 data 저장, memory에 disk의 내용 cache
+        설계적 제약으로 in-memory만큼의 성능이 안 나옴
+    NVM
