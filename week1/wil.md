@@ -70,10 +70,10 @@
             구현한 서비스나, database 그 자체에 존재하는 issue도 파악 가능
 
 ## Understanding Trade-Offs
-얻는 것이 있으면 잃는 것도 있다
-    optimized for low read or write latency
-    maximize density
-    operational simplicity
+    얻는 것이 있으면 잃는 것도 있다
+        optimized for low read or write latency
+        maximize density
+        operational simplicity
 
 Storage engine 설계시 고려하는 것들
     physical data layout
