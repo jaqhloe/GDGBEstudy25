@@ -70,38 +70,38 @@
             구현한 서비스나, database 그 자체에 존재하는 issue도 파악 가능
 
 ## Understanding Trade-Offs
-    얻는 것이 있으면 잃는 것도 있다
-        optimized for low read or write latency
-        maximize density
-        operational simplicity
+        얻는 것이 있으면 잃는 것도 있다
+            optimized for low read or write latency
+            maximize density
+            operational simplicity
 
-Storage engine 설계시 고려하는 것들
-    physical data layout
-    organizing pointers
-    serialization format
-    garbage collecting the data
-    DB system에 storage engine 적용 방식
-    *NEVER* lose any data
+        Storage engine 설계시 고려하는 것들
+            physical data layout
+            organizing pointers
+            serialization format
+            garbage collecting the data
+            DB system에 storage engine 적용 방식
+            *NEVER* lose any data
 
 ## Database Classification
-분류는 다양할 수 있으나 아래의 3가지로도 분류할 수 있다
-    1. Online transactoin processing(OLTP)
-        user와 대면해 요청과 transaction 처리
-        query가 predefined, short-lived
-
-    2. Online analytical processing(OLAP)
-        고수준 aggregation 처리
-        analytics, data warehousing 등에도 활용
-        query가 complex, long-running, ad-hoc
-
-    3. Hybrid transactional and analytical processing(HTAP)
-        1과 2의 혼합된 성질
-
-    이외에도
-        key-value stores
-        relational databases
-        document-oriented stores
-        graph databases
+    분류는 다양할 수 있으나 아래의 3가지로도 분류할 수 있다
+        1. Online transactoin processing(OLTP)
+            user와 대면해 요청과 transaction 처리
+            query가 predefined, short-lived
+    
+        2. Online analytical processing(OLAP)
+            고수준 aggregation 처리
+            analytics, data warehousing 등에도 활용
+            query가 complex, long-running, ad-hoc
+    
+        3. Hybrid transactional and analytical processing(HTAP)
+            1과 2의 혼합된 성질
+    
+        이외에도
+            key-value stores
+            relational databases
+            document-oriented stores
+            graph databases
 
 ## DBMS Architecture
     구성 요소와 그 관계는 경우에 따라 다르게 분석되나 대부분 아래와 같다
